@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body{
+    font-family : 'Poppins', sans-serif;
+}
+
+.hero-text{
+    width: 60%;
+    margin: 0 3%;
+    padding-top: 3%;
+
+}
+.hero-img{
+    width: 40%;
+    background-color: #BFCFE7;
+    padding: 5%;
+    height: 100vh;
+
+}
+/* .hero-img img{
+margin-top: 8%;
+} */
+.primary-text-blue{
+    color: #525CEB;
+}
+.primary-text-dark{
+    color: #3D3B40;
+}
+
+.bg-dark{
+    background-color: #3D3B40;
+    color: #F8EDFF;
+}
+.button{
+    border: 2px solid #525CEB;
+    color: #3D3B40;
+    transition: 0.2s;
+}
+
+.button:hover{
+    border: 2px solid #3D3B40;
+    color: #fff;
+    background-color: #3D3B40;
+}
+.hero-rounded{
+    border: 1px solid transparent;
+    color: #3D3B40;
+    /* background-color: #BFCFE7; */
+    /* background-color: #3D3B40; */
+    /* background-color: #F8EDFF;
+    width: 23%;
+    padding: 8px; */
+}
+
+.main-text{
+    font-size: 3.2rem;
+    line-height: 3.5rem;
+}
+
+.redirect-links a{
+    margin-right: 10%;
+    position: relative;
+}
+
+.redirect-links a::after{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 8%;
+    border: 1px solid transparent;
+    background-color: #3D3B40;
+    bottom: -3px;
+    left: 0;
+    border-radius: 25px;
+}
+
+.tac{
+bottom: 0;
+display: none;
+}
+.role-box{
+    border: 2px solid #525CEB;
+    color: #3D3B40;
+    padding: 15px;
+    margin-top: 3%;
+    width: 50%;
+}
+
+.selected-role-box{
+    border: 2px solid #525CEB;
+    background-color: #525ceb9c;
+    color: #fff;
+    padding: 15px;
+    margin-top: 3%;
+    width: 50%;
+}
+
+input{
+    border: none;
+    outline: none;
+}
