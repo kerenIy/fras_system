@@ -1,0 +1,93 @@
+.main-body{
+    width: 100%;
+    min-height: 100vh;
+}
+
+.side-container{
+    position: fixed;
+    min-height: 100vh;
+    width: 20%;
+    padding: 3%;
+    top: 0;
+    background-color: #bfcfe732;
+
+}
+
+.section-container{
+    right: 0;
+    width: 80%;
+    min-height: 100vh;
+}
+
+.admin-btn{
+    border: 2px solid #525CEB;
+    color: #fff;
+    background-color: #525CEB;
+    transition: 0.2s;
+}
+
+.admin-btn:hover{
+    border: 2px solid #525CEB;
+    color: #525CEB;
+    background-color: #fff;
+    transition: 0.2s;
+}
+
+.card-container{
+    width: 100%;
+}
+.card-item{
+    width: 30%;
+    margin: 1%;
+}
+.admin-chart{
+    width: 250px;
+}
+.growth{
+    width: 600px;
+}
+.upcoming{
+    background-color: #BFCFE7;
+}
+.card-one-darker{
+    background-color: #3d3b40d1;
+    color: #fff;
+    padding: 10px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border: 1.5px solid #3D3B40;
+
+}
+
+.card-one-lighter{
+    background-color: #BFCFE7;
+    color: #3D3B40;
+    padding: 25px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border: 1.5px solid #3D3B40;
+}
+.card-two-lighter{
+    background-color: #F8EDFF;
+    color: #3D3B40;
+    padding: 25px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border: 1.5px solid #3D3B40;
+
+}
+.card-three-lighter{
+    background-color: #525ceba5;
+    color: #3D3B40;
+    padding: 25px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border: 1.5px solid #3D3B40;
+
+}
+
+.admin-user{
+    width: 35px;
+    height: 35px;
+    border-radius: 100%;
+}

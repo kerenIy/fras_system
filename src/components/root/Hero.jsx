@@ -4,6 +4,8 @@ import attendance from '../../assets/attendance.svg'
 import { Link } from 'react-router-dom'
 import Button from '../global/Button'
 
+import {motion, AnimatePresence} from 'framer-motion'
+
 export default function Hero() {
   return (
     <>
@@ -17,14 +19,40 @@ export default function Hero() {
             </div> */}
 
 
-            <p className='text-xs hero-rounded rounded-full font-light uppercase'><span className='font-black primary-text-blue mr-1.5'>|</span>facial recognition attendance system</p>
-            <p className='main-text sm:my-6 font-semibold primary-text-dark'>Say Hello to <span className='primary-text-blue'>Effortless Attendance </span>  with <span className=''>Facial Recognition</span>!</p>
-            <p className='mb-5 text-sm font-light text-zinc-600'>Streamline Attendance with AI: Say Goodbye to Manual Records!
+            <motion.div
+              initial={{ opacity: 0, x: -100 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: 300 }}
+              transition={{ duration: 1, }}
+            >
+              <p className='text-xs hero-rounded rounded-full font-light uppercase'><span className='font-black primary-text-blue mr-1.5'>|</span>facial recognition attendance system</p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 100 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -100 }}
+              transition={{ duration: 1, delay: 0.5}}
+            >
+                  <p className='main-text sm:my-6 font-semibold primary-text-dark'>Say Hello to <span className='primary-text-blue'>Effortless Attendance </span>  with <span className=''>Facial Recognition</span>!</p>
+
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 100 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -300 }}
+              transition={{ duration: 1, delay: 1.5 }}
+            >
+              <p className='mb-5 text-sm font-light text-zinc-600'>Streamline Attendance with AI: Say Goodbye to Manual Records!
               Introducing our Facial Recognition Attendance System: Revolutionize your classroom management effortlessly. Boost productivity and engagement while ensuring accurate attendance tracking. Join us in embracing 
               innovation for a seamless teaching experience. Try it now!
-            </p>
+              </p>
+              <Button name='get started' link='/roles'/>
+            </motion.div>
+            
 
-            <Button name='get started' link='/roles'/>
+            
 
 
             <p className='text-xs font-light tac primary-text-blue'>Terms & Conditions Apply!</p>

@@ -1,3 +1,4 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useState } from 'react'
 
 export default function RoleItem(props) {
@@ -18,7 +19,11 @@ export default function RoleItem(props) {
         <div className={toggle} onClick={handleBorderChange}>
             <div className='text-md font-light flex rounded-md' >
                 {/* <input type="radio" name="" id="" /> */}
-                <p className='ml-3'>{props.role}</p>
+                <FontAwesomeIcon icon={props.img} className='role-item-box text-center' />
+                <div className="">
+                    <p className='text-sm font-medium ml-3'>{props.role}</p>
+                    <p className='ml-3 text-xs text-zinc-600 font-light'>{props.description}</p>
+                </div>
             </div>
         </div>
     </>

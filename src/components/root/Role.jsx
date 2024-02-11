@@ -4,6 +4,10 @@ import RoleItem from './RoleItem'
 import Button from '../global/Button'
 import { Link, useNavigate } from 'react-router-dom'
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUsers, faUserSecret } from '@fortawesome/free-solid-svg-icons'
+
+
 export default function Role() {
     const navigate = useNavigate()
 
@@ -55,22 +59,22 @@ export default function Role() {
     <>
         <div className="roles flex justify-center items-center">
             <div className="hero-text">
-                <p className='mb-5 text-4xl primary-text-dark font-medium capitalize'>select a role:</p>
+                <p className='text-3xl font-medium capitalize mb-1.5'>get started</p>
+                <p className='text-zinc-600 text-sm font-light mb-10'>Select the option that best applies to your role</p>
 
-
-                <div className="container">
+                <div className="mt-5 container">
                     <div className={admin} onClick={handleAdminSelect}>
-                        <RoleItem role='Administrator'/>
+                        <RoleItem img={faUserSecret} role='Administrator' description='For system administrators'/>
                     </div>
 
                     <div className={lecturer} onClick={handleLecturerSelect}>
-                        <RoleItem role='Lecturer' />
+                        <RoleItem img={faUsers} role='Lecturer' description='For course instructors and lecturers'/>
                     </div>               
                 </div>
 
 
-                <div className="mt-7 flex">
-                    <button className="py-3 pl-3 font-medium rounded-lg text-md capitalize mt-4" onClick={handleNavigate}>
+                <div className="mt-7 flex justify-end items-end">
+                    <button className="py-3 font-light rounded-lg text-xs capitalize mt-4" onClick={handleNavigate}>
                         Next <span className='ml-3'>&rarr;</span>
                     </button>
                 </div>

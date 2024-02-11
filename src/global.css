@@ -78,24 +78,95 @@ margin-top: 8%;
 bottom: 0;
 display: none;
 }
-.role-box{
+
+.role-item-box{
     border: 2px solid #525CEB;
+    background-color: #525CEB;
+    color: #fff;
+    padding: 8px 2px;
+    border-radius: 4px;
+    width: 10%;
+}
+.role-box{
+    border: 2px solid linear-gradient(#e966a0, #9575de);
     color: #3D3B40;
     padding: 15px;
     margin-top: 3%;
-    width: 50%;
+    width: 70%;
 }
 
 .selected-role-box{
     border: 2px solid #525CEB;
-    background-color: #525ceb9c;
-    color: #fff;
-    padding: 15px;
+    /* background-color: #525ceb9c; */
+    color: #3D3B40;
+    padding: 5px;
     margin-top: 3%;
     width: 50%;
+}
+
+.selected-role-box .role-item-box{
+    border: 2px solid #525CEB;
+    background-color: #525CEB;
+    color: #fff;
+    padding: 8px 5px;
+    border-radius: 4px;
+    width: 10%;
 }
 
 input{
     border: none;
     outline: none;
+}
+
+.login-form{
+    margin-left: 1%;
+    margin-top: 3%;
+    width: 60%;
+}
+
+.login-form input{
+    border: 1.5px solid rgba(82, 82, 91, 0.582);
+    border-radius: 2px;
+    padding: 2.5% 2%;
+    width: 80%;
+}
+
+.admin-circle{
+    border: 1px solid #525CEB;
+    background-color: #525CEB;
+    color: white;
+    width: 30%;
+    height: 30%;
+    margin-left: 30%;
+    margin-bottom: 7%;
+    border-radius: 50%;
+    padding: 5px;
+}
+
+.form-btn{
+    border: 2px solid #3D3B40;
+    /* background-color: #3D3B40; */
+    color: #3D3B40;
+    width: 25%;
+    margin-left: 13%;
+    transition: 0.3s;
+}
+
+.form-btn:hover{
+    background-color: #3D3B40;
+    color: #fff;
+}
+
+.form-header{
+    position: relative;
+}
+.form-header::after{
+    position: absolute;
+    content: '';
+    width: 18%;
+    height: 2px;
+    background-color: #525CEB;
+    bottom: -7px;
+    left: 41%;
+
 }
