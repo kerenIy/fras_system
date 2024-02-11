@@ -8,7 +8,7 @@ export default function Cards() {
   return (
     <>
         <div className="mt-3">
-            <p className='ml-6 mt-5 font-normal text-xl'>Overview</p>
+            <p className='ml-6 mt-5 font-normal text-xl text-zinc-600'>Overview</p>
             <div className="flex card-container">
                 <CardItem darker='card-one-darker' lighter='card-one-lighter' title='total students' icon={faUser} figures='123,000'/>
                 <CardItem darker='card-one-darker' lighter='card-two-lighter' title='total faculties' icon={faUser} figures='87'/>

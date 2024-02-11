@@ -12,7 +12,7 @@ export default function Container() {
     <>
         <div className="mt-5">
             <div className="flex justify-between items-center">
-                <p className='ml-6 mt-10 font-semibold text-3xl'>Good Morning, Tein</p>
+                <p className='text-zinc-600 ml-6 mt-10 font-semibold text-3xl'>Good Morning, Tein</p>
 
                 <div className="flex justify-between items-center mr-8">
                     <div className="border-2 mt-10 mr-8 py-0.5 px-8 rounded-full">
@@ -79,7 +79,7 @@ export default function Container() {
                         </div> */}
                     
                     <div className="">
-                        <p className='text-2xl font-medium my-3'>Upcoming Events</p>
+                        <p className='text-zinc-600 text-2xl font-medium my-3'>Upcoming Events</p>
 
                         <div className="upcoming py-0.5 px-1.5 rounded-md">
                             <div className=" bg-white p-1.5 rounded-sm my-1 flex justify-between items-center text-xs font-normal">
