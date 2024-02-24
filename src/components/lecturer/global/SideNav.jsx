@@ -1,24 +1,25 @@
 import React from 'react'
-import SideBarItem from './SideBarItem'
+import SideBarItem from './SideNavItem'
 import logo from '../../../assets/trans-facier.png'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSquarePollHorizontal, faGraduationCap, faChalkboardTeacher, faGear, faSchool, faRightFromBracket  } from '@fortawesome/free-solid-svg-icons';
-import ActionBtn from './ActionBtn';
+// import ActionBtn from './ActionBtn';
+
+import { Link } from 'react-router-dom';
 
 import user from '../../../assets/user.jpg'
 
-
-export default function SideBar() {
+export default function SideNav() {
   return (
     <>
-        <div className="bg-white side-container">
+        <div className="bg-white side-nav">
 
             <div className="logo">
               <div className="flex justify-center items-center mr-5">
                 <div className="logo flex my-4 ">
                     <img src={logo} alt="" className='bg-white rounded-full w-10 h-10'/>
-                    <p className='font-medium ml-1.5 mt-2'>fa<span className='primary-text-blue'>cier</span></p>
+                    <p className='font-medium ml-1.5 mt-2'>fa<span className='text-green-700'>cier</span></p>
                 </div>
               </div>
 
@@ -28,7 +29,7 @@ export default function SideBar() {
                 <p className='text-zinc-600 text-xs text-center'>ibiteiniyalla@gmail.com</p>
               </div>
 
-                <ActionBtn name='register student'/>
+                {/* <ActionBtn name='register student'/> */}
 
                 <div className="side-links">
                     <div className="">

@@ -21,8 +21,8 @@ export default function RoleItem(props) {
                 {/* <input type="radio" name="" id="" /> */}
                 <FontAwesomeIcon icon={props.img} className='role-item-box text-center' />
                 <div className="">
-                    <p className='text-sm font-medium ml-3'>{props.role}</p>
-                    <p className='ml-3 text-xs text-zinc-600 font-light'>{props.description}</p>
+                    <p className='text-lg font-medium ml-3'>{props.role}</p>
+                    <p className='ml-3 text-sm text-zinc-600 font-light'>{props.description}</p>
                 </div>
             </div>
         </div>

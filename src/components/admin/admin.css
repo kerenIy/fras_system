@@ -1,6 +1,7 @@
 .main-body{
     width: 100%;
     min-height: 100vh;
+    font-family: 'DM Sans', sans-serif;
 }
 
 .side-container{
@@ -10,7 +11,6 @@
     padding: 3%;
     top: 0;
     background-color: #bfcfe732;
-
 }
 
 .section-container{
@@ -37,8 +37,18 @@
     width: 100%;
 }
 .card-item{
-    width: 30%;
-    margin: 1%;
+    width: 200px;
+    margin-left: 1%;
+}
+.card-icon{
+    border: 2px solid #525CEB;
+    color: #fff;
+    padding: 5px;
+}
+.card-icon2{
+    border: 2px solid #525CEB;
+    color: #000;
+    padding: 5px;
 }
 .admin-chart{
     width: 250px;
@@ -50,13 +60,21 @@
     background-color: #BFCFE7;
 }
 .card-one-darker{
-    background-color: #3d3b40d1;
+    background-color: #fff;
+    color: #000;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1.5px solid #fff;
+    height: 100px;
+    border: 1px solid #000000d5;
+
+}
+.card-two-darker{
+    background-color: #000;
     color: #fff;
     padding: 10px;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-    border: 1.5px solid #3D3B40;
-
+    border-radius: 8px;
+    height: 100px;
 }
 
 .card-one-lighter{
@@ -90,4 +108,21 @@
     width: 35px;
     height: 35px;
     border-radius: 100%;
+}
+
+.profile{
+    border: 1px solid transparent;
+    width: 200px;
+    border-radius: 100%;
+}
+.fc-daygrid-day {
+    padding:  1px;
+}
+:root {
+    --fc-daygrid-day-min-height:  20px;
+}
+.header{
+    border: #525ceb4f;
+    background-color: #525ceb4f;
+
 }

@@ -1,0 +1,92 @@
+<div className="mx-6 flex justify- items-center">
+                    <div className="">
+                        <img src={growth} alt="" className='growth'/>
+                    </div>
+
+
+                    <div className="mb-28">
+                    <div className="mb-6 performance mr-6">
+                        {/* <div className="">
+                            <p className='ml-6 mt-5 font-normal text-xl'>Performance</p>
+                            <img src={chart} alt="" className='admin-chart'/>
+                        </div> */}
+                    
+                    {/* <div className="">
+                        <p className='text-2xl font-medium my-3'>Quick Actions</p>
+
+                        <div className="my-1 flex justify-between items-center text-sm font-normal">
+                            <p>Register New Student</p>
+                            <FontAwesomeIcon icon={faChevronRight} className='primary-text-blue'/>
+                        </div>
+
+                        <div className="my-1 flex justify-between items-center text-sm font-normal">
+                            <p>View Students</p>
+                            <FontAwesomeIcon icon={faChevronRight} className='primary-text-blue'/>
+                        </div>
+
+                        <div className="my-1 flex justify-between items-center text-sm font-normal">
+                            <p>Profile Settings</p>
+                            <FontAwesomeIcon icon={faChevronRight} className='primary-text-blue'/>
+                        </div>
+
+                        <div className="my-1 flex justify-between items-center text-sm font-normal">
+                            <p>View Analytics</p>
+                            <FontAwesomeIcon icon={faChevronRight} className='primary-text-blue'/>
+                        </div>
+                    </div> */}
+
+                    </div>
+
+                    <div className="performance mr-">
+                        {/* <div className="">
+                            <p className='ml-6 mt-5 font-normal text-xl'>Performance</p>
+                            <img src={chart} alt="" className='admin-chart'/>
+                        </div> */}
+                    
+                    <div className="">
+                        <p className='text-zinc-600 text-2xl font-medium my-3'>Upcoming Events</p>
+
+                        <div className="upcoming py-0.5 px-1.5 rounded-md">
+                            <div className=" bg-white p-1.5 rounded-sm my-1 flex justify-between items-center text-xs font-normal">
+                                <p className='mr-9'>Events for Graphic Design</p>
+                                <FontAwesomeIcon icon={faChevronRight} className='text-black bg-zinc-200 rounded-full py-1.5 px-2 text-xs'/>
+                            </div>
+
+                            <div className="bg-white p-1.5 rounded-sm my-1 flex justify-between items-center text-xs font-normal">
+                                <p>Schedule Weekly Maintenance</p>
+                                <FontAwesomeIcon icon={faChevronRight} className='text-black bg-zinc-200 rounded-full py-1.5 px-2 text-xs'/>
+                            </div>
+
+                            <div className="bg-white p-1.5 rounded-sm my-1 flex justify-between items-center text-xs font-normal">
+                                <p className='mr-16'>Clear Old Students from Database </p>
+                                <FontAwesomeIcon icon={faChevronRight} className='text-black bg-zinc-200 rounded-full py-1.5 px-2 text-xs'/>
+                            </div>
+
+                            <div className="bg-white p-1.5 rounded-sm my-1 flex justify-between items-center text-xs font-normal">
+                                <p>View & Store Analytics</p>
+                                <FontAwesomeIcon icon={faChevronRight} className='text-black bg-zinc-200 rounded-full py-1.5 px-2 text-xs'/>
+                            </div>
+                            <div className=" bg-white p-1.5 rounded-sm my-1 flex justify-between items-center text-xs font-normal">
+                                <p className='mr-9'>Events for Graphic Design</p>
+                                <FontAwesomeIcon icon={faChevronRight} className='text-black bg-zinc-200 rounded-full py-1.5 px-2 text-xs'/>
+                            </div>
+
+                            <div className="bg-white p-1.5 rounded-sm my-1 flex justify-between items-center text-xs font-normal">
+                                <p>Schedule Weekly Maintenance</p>
+                                <FontAwesomeIcon icon={faChevronRight} className='text-black bg-zinc-200 rounded-full py-1.5 px-2 text-xs'/>
+                            </div>
+
+                            <div className="bg-white p-1.5 rounded-sm my-1 flex justify-between items-center text-xs font-normal">
+                                <p className='mr-16'>Clear Old Students from Database </p>
+                                <FontAwesomeIcon icon={faChevronRight} className='text-black bg-zinc-200 rounded-full py-1.5 px-2 text-xs'/>
+                            </div>
+
+                            <div className="bg-white p-1.5 rounded-sm my-1 flex justify-between items-center text-xs font-normal">
+                                <p>View & Store Analytics</p>
+                                <FontAwesomeIcon icon={faChevronRight} className='text-black bg-zinc-200 rounded-full py-1.5 px-2 text-xs'/>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                    </div>
+                </div>

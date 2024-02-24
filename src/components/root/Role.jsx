@@ -59,8 +59,8 @@ export default function Role() {
     <>
         <div className="roles flex justify-center items-center">
             <div className="hero-text">
-                <p className='text-3xl font-medium capitalize mb-1.5'>get started</p>
-                <p className='text-zinc-600 text-sm font-light mb-10'>Select the option that best applies to your role</p>
+                <p className='text-6xl font-medium capitalize mb-1.5'>get started</p>
+                <p className='text-zinc-600 text-base font-light ml-1 mb-10'>Select the option that best applies to your role</p>
 
                 <div className="mt-5 container">
                     <div className={admin} onClick={handleAdminSelect}>
@@ -74,7 +74,7 @@ export default function Role() {
 
 
                 <div className="mt-7 flex justify-end items-end">
-                    <button className="py-3 font-light rounded-lg text-xs capitalize mt-4" onClick={handleNavigate}>
+                    <button className="py-3 font-light rounded-lg text-base capitalize mt-4" onClick={handleNavigate}>
                         Next <span className='ml-3'>&rarr;</span>
                     </button>
                 </div>

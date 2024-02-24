@@ -14,9 +14,9 @@ export default function Login(props) {
     <>
         <div className="login flex justify-center items-center">
             <div className="hero-text">
-                <p className='form-header text-3xl primary text-center mb-4'>{props.role}</p>
+                <p className='form-header text-5xl primary text-center mb-4'>{props.role}</p>
                 
-                <div className="admin-bar text-xs font-normal flex justify-evenly items-center text-zinc-600">
+                <div className="admin-bar text-sm font-normal flex justify-evenly items-center text-zinc-600">
                     <div className="my-4">
                         <div className="admin-circle">
                             <p className='text-center'>
@@ -50,23 +50,23 @@ export default function Login(props) {
 
                 <form action="" className='my-4 login-form'>
                     <div className="flex justify-between items-center">
-                        <label htmlFor="" className='text-sm font-normal'>Username:</label>
-                        <input type="text" placeholder='Enter username' className='text-xs font-light'/>
+                        <label htmlFor="" className='text-base font-normal'>Username:</label>
+                        <input type="text" placeholder='Enter username' className='ml-2 text-sm font-light'/>
                     </div>
                     <br />
 
                     <div className="flex justify-between items-center">
-                        <label htmlFor="" className='text-sm  font-normal'>Password:</label>
-                        <input type="text" placeholder='Enter password' className='text-xs font-light'/>
+                        <label htmlFor="" className='text-base  font-normal'>Password:</label>
+                        <input type="text" placeholder='Enter password' className='ml-2 text-sm font-light'/>
                     </div>
                 </form>
 
-                <button className="form-btn py-2 font-medium rounded-sm text-sm capitalize mt-4">
-                    <Link to='/admin/home'>Log In<span className='ml-3'>&rarr;</span></Link>
+                <button className="form-btn py-2 font-medium rounded-sm text-base capitalize mt-4">
+                    <Link to={props.link}>Log In<span className='ml-3'>&rarr;</span></Link>
                 </button> 
 
                 <div className="mt-7 flex justify-end items-end">
-                    <button className="py-3 pl-3 font-light rounded-lg text-xs capitalize mt-4">
+                    <button className="py-3 pl-3 font-light rounded-lg text-base capitalize mt-4">
                        <span className='mr-3'>&larr;</span> <Link to='/roles'>Back</Link> 
                     </button>
                 </div>          
