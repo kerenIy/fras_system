@@ -19,7 +19,7 @@ export default function SideNav() {
               <div className="flex justify-center items-center mr-5">
                 <div className="logo flex my-4 ">
                     <img src={logo} alt="" className='bg-white rounded-full w-10 h-10'/>
-                    <p className='font-medium ml-1.5 mt-2'>fa<span className='text-green-700'>cier</span></p>
+                    <p className='font-medium ml-1.5 mt-2'>fa<span className='text-green-500'>cier</span></p>
                 </div>
               </div>
 
