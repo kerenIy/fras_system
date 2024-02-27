@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import GreenCard from './GreenCard'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch, faBell} from '@fortawesome/free-solid-svg-icons'
@@ -10,16 +10,42 @@ import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid' // a plugin!
 import ScheduleItem from './ScheduleItem'
 import Recent from './Recent'
+import NewClass from '../classes/NewClass'
 
+import { faX } from '@fortawesome/free-solid-svg-icons'
 
 export default function LecturerContainer() {
+    const [showPopup, setShowPopup] = useState(false)
+
+    const handleOpenPopup = () =>{
+        setShowPopup(true);
+    }
+
+    const handleClosePopup = () =>{
+        setShowPopup(false);
+    }
+
   return (
     <>
-        <div className="">
+        <div className="lecturer-home">
             <div className="flex justify-between items-center">
             <div className="mt-9 ml-5 flex justify-start items-start">
                 <div className="act-btn text-center py-1.5 px-4 rounded-sm mb-4">
-                <p className='text-sm font-normal'>Add New Course +</p>
+                    <button className='text-sm font-normal' onClick={handleOpenPopup}>
+                        Add New Course +
+                    </button>
+
+                    {showPopup && (
+                            <div className="custom-popup">
+                                <div className="popup-content">
+                                    <div className="flex justify-end items-end">
+                                        <FontAwesomeIcon icon={faX} className='text-black w-3 h-3' onClick={handleClosePopup}/>
+                                    </div>
+
+                                    <NewClass />
+                                </div>
+                            </div>
+                    )}
                 </div> 
             </div>
 
@@ -52,7 +78,7 @@ export default function LecturerContainer() {
 
                 
 
-                <div className="bg-white rounded-lg mr-3 p-4 mt-7 mb-3 pt-4" style={{ width: '290px', fontSize: '0.4rem' ,}}>
+                <div className="bg-white rounded-lg mr-3 p-4 mt-5 border mb-3 pt-4" style={{ width: '290px', fontSize: '0.4rem' ,}}>
                     <FullCalendar
                         plugins={[ dayGridPlugin ]}
                         initialView="dayGridMonth"

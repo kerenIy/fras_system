@@ -33,10 +33,10 @@ export default function SideNav() {
 
                 <div className="side-links">
                     <div className="">
-                      <SideBarItem icon={faSquarePollHorizontal} name='dashboard' link='/admin/home'/>
+                      {/* <SideBarItem icon={faSquarePollHorizontal} name='dashboard' link='/admin/home'/> */}
                       {/* <SideBarItem icon={faSchool} name='faculties' link='/admin/faculties'/> */}
-                      <SideBarItem icon={faGraduationCap} name='students' link='/admin/students'/>
-                      <SideBarItem icon={faChalkboardTeacher} name='lecturers' link='/admin/lecturers'/>
+                      <SideBarItem icon={faChalkboardTeacher} name='classes' link='/classes'/>
+                      <SideBarItem icon={faGraduationCap} name='students' link='/admin/lecturers'/>
                       <SideBarItem icon={faGear} name='settings' link='/admin/settings'/>
                       <SideBarItem icon={faRightFromBracket} name='sign out' link='/admin/home'/>
                     </div>

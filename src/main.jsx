@@ -12,6 +12,8 @@ import LoginPage from './pages/admin/Login.jsx'
 import SignIn from './pages/lecturer/SignIn.jsx'
 import Dashboard from './pages/admin/dashboard/Dashboard.jsx'
 import Home from './pages/lecturer/Home.jsx'
+import AllClasses from './pages/lecturer/classes/AllClasses.jsx'
+import ClassView from './pages/lecturer/classes/ClassView.jsx'
 
 
 
@@ -43,7 +45,15 @@ const router = createBrowserRouter([
   {
     path: '/lecturer/home',
     element: <Home />
-  }
+  },
+  {
+    path: '/classes',
+    element: <AllClasses />
+  },
+  {
+    path: '/class1',
+    element: <ClassView />
+  },
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(
