@@ -1,6 +1,6 @@
 .main-body{
     width: 100%;
-    min-height: 100vh;
+    height: 100vh;
     font-family: 'DM Sans', sans-serif;
 }
 
@@ -25,13 +25,26 @@
     background-color: #525CEB;
     transition: 0.2s;
 }
-
+/* 
 .admin-btn:hover{
     border: 2px solid #525CEB;
     color: #525CEB;
-    background-color: #fff;
+    background-color: #bfcfe732;
+    transition: 0.2s;
+} */
+.trans-btn{
+    border: 2px solid #525CEB;
+    color: #525CEB;
+    background-color: #bfcfe732;
     transition: 0.2s;
 }
+/* 
+.trans-btn:hover{
+    border: 2px solid #525CEB;
+    color: #fff;
+    background-color: #525CEB;
+    transition: 0.2s;
+} */
 
 .card-container{
     width: 100%;

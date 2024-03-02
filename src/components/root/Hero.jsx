@@ -13,7 +13,7 @@ import image3 from '../../assets/white_woman.jpg'
 export default function Hero() {
   return (
     <>
-        <div className="flex justify-between items-center">
+        <div className="hero flex justify-between items-center">
 
           <div className="hero-text">
             {/* <div className="redirects mb-8 flex font-semibold primary-text-blue text-sm redirect-links text-zinc-600">

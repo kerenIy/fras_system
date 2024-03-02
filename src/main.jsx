@@ -14,6 +14,7 @@ import Dashboard from './pages/admin/dashboard/Dashboard.jsx'
 import Home from './pages/lecturer/Home.jsx'
 import AllClasses from './pages/lecturer/classes/AllClasses.jsx'
 import ClassView from './pages/lecturer/classes/ClassView.jsx'
+import WebcamCapture from './components/admin/forms/captureImage.jsx'
 
 
 
@@ -54,6 +55,10 @@ const router = createBrowserRouter([
     path: '/class1',
     element: <ClassView />
   },
+  {
+    path: '/capture',
+    element: <WebcamCapture />
+  }
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(

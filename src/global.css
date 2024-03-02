@@ -204,11 +204,15 @@ input{
     left: 41%;
 
 }
+.hero{
+    height: 75vh;
+}
 .mid-section{
     background-color: #525cebae;
     color: #fff;
     margin: 7% 1.5%;
     padding: 6% 0%;
+    height: 100vh;
 }
 .mid-section-imgs{
     margin: 7% 0;
