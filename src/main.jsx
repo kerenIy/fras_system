@@ -15,6 +15,8 @@ import Home from './pages/lecturer/Home.jsx'
 import AllClasses from './pages/lecturer/classes/AllClasses.jsx'
 import ClassView from './pages/lecturer/classes/ClassView.jsx'
 import WebcamCapture from './components/admin/forms/captureImage.jsx'
+import AttendanceList from './components/lecturer/classes/AttendanceList.jsx'
+import Attendance from './components/lecturer/classes/Attendance.jsx'
 
 
 
@@ -56,8 +58,8 @@ const router = createBrowserRouter([
     element: <ClassView />
   },
   {
-    path: '/capture',
-    element: <WebcamCapture />
+    path: '/attendance1',
+    element: <Attendance />
   }
 ])
 

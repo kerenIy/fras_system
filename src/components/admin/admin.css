@@ -25,6 +25,12 @@
     background-color: #525CEB;
     transition: 0.2s;
 }
+.not-complete-btn{
+    border: 1px solid #525ceb5b;
+    color: #fff;
+    background-color: #525ceb5b;
+    transition: 0.2s;
+}
 /* 
 .admin-btn:hover{
     border: 2px solid #525CEB;
@@ -138,4 +144,12 @@
     border: #525ceb4f;
     background-color: #525ceb4f;
 
+}
+
+.hidden{
+    display: none;
+}
+
+.show{
+    display: block;
 }

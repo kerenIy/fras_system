@@ -11,7 +11,7 @@ export default function GreenCard() {
                     <div className="">   
                         <p className='ml-1.5'>Good morning, </p>
                         <p className='ml-1.5 font-semibold text-4xl my-2'>Iyalla Ibitein</p>
-                        <button className='mt-4 text-green-500 text-sm bg-white rounded-3xl py-1.5 px-3'>
+                        <button className='mt- text-green-500 text-sm bg-white rounded-3xl py-1.5 px-3'>
                             View your schedule
                         </button>
                     </div>

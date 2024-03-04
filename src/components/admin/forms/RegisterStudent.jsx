@@ -5,37 +5,42 @@ import { faUser } from '@fortawesome/free-solid-svg-icons';
 
 
 import Webcam from 'react-webcam';
+import { useNavigate } from 'react-router-dom';
+import WebcamCapture from './captureImage';
 
 export default function RegisterStudent() {
-    const webcamRef = useRef(null);
+
+    const navigate = useNavigate();
+
+    // const webcamRef = useRef(null);
 
 
-    const capture = useCallback(() => {
-       const imageSrc = webcamRef.current.getScreenshot();
-       // Create a link element
-       const link = document.createElement('a');
-       link.href = imageSrc;
-       link.download = 'capturedImage.jpeg'; // Set the file name
-       // Append the link to the body
-       document.body.appendChild(link);
-       // Simulate click to download the image
-       link.click();
-       // Remove the link from the body
-       document.body.removeChild(link);
-      }, [webcamRef]);
+    // const capture = useCallback(() => {
+    //    const imageSrc = webcamRef.current.getScreenshot();
+    //    // Create a link element
+    //    const link = document.createElement('a');
+    //    link.href = imageSrc;
+    //    link.download = 'capturedImage.jpeg'; // Set the file name
+    //    // Append the link to the body
+    //    document.body.appendChild(link);
+    //    // Simulate click to download the image
+    //    link.click();
+    //    // Remove the link from the body
+    //    document.body.removeChild(link);
+    //   }, [webcamRef]);
    
-    const videoConstraints = {
-       width: 220,
-       height: 200,
-       facingMode: "user"
-    };
+    // const videoConstraints = {
+    //    width: 220,
+    //    height: 200,
+    //    facingMode: "user"
+    // };
 
 
     const [addSchedule, setAddSchedule] = useState(1);
     const [scheduleNo, setScheduleNo] = useState();
 
-    const videoRef = useRef(null)
-    const [stream, setStream] = useState(null)
+    // const videoRef = useRef(null)
+    // const [stream, setStream] = useState(null)
 
 
     // useEffect(() => {
@@ -86,137 +91,151 @@ export default function RegisterStudent() {
         )
     }
 
-    const [base64Image, setBase64Image] = useState('');
+    // const [base64Image, setBase64Image] = useState('');
 
-    const handleImageChange = (event) => {
-      const file = event.target.files[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onloadend = () => {
-          const base64String = reader.result;
-          setBase64Image(base64String);
-        };
-        reader.readAsDataURL(file);
-      }
-    };
+    // const handleImageChange = (event) => {
+    //   const file = event.target.files[0];
+    //   if (file) {
+    //     const reader = new FileReader();
+    //     reader.onloadend = () => {
+    //       const base64String = reader.result;
+    //       setBase64Image(base64String);
+    //     };
+    //     reader.readAsDataURL(file);
+    //   }
+    // };
+
+    const [firstStage, setFirstStage] = useState('')
+    const [secondStage, setSecondStage] = useState('hidden')
+
+    const handleNext = () =>{
+        setFirstStage('hidden')
+        setSecondStage('show')
+    }
 
 
 
 
   return (
     <>
-        <div className="pl-1.5 text-black">
-            <p className='text-2xl font-semibold mb-4'>Register Student</p>
-            
-            <div className="ml-4 flex justify-start items-start forms">
-                <div className="text-xs text-zinc-600">
-                <div>
-                    <label htmlFor="file-upload" className='flex justify-center items-center custom-file-upload'>
-                        <div className="">
-                            {/* <div className="image-placeholder">
-                                {base64Image ? (
-                                    <img src={base64Image} alt="Profile" className='selected-profile'/>
-                                ) : (
-                                    <>
-                                        <div className="flex justify-center rounded-lg items-center text-white bg-gray-200 p-3 w-[100px] h-[100px] ml-4">
-                                            <FontAwesomeIcon icon={faUser} />
-                                        </div>
-                                    </>
-                                )}
-                            </div> */}
-                                <div className="webcam-container">
-                                    <Webcam
-                                        audio={false}
-                                        height={200}
-                                        ref={webcamRef}
-                                        screenshotFormat="image/jpeg"
-                                        width={220}
-                                        videoConstraints={videoConstraints}
-                                    />
-                                    {/* <button onClick={capture}>Capture</button> */}
-                                </div>
-                            <div className='capitalize text-center  text-sm py-4' onClick={capture}>Capture image</div>
-                        </div>
-                    </label>
-                    <input
-                        id="file-upload"
-                        type="file"
-                        style={{ display: 'none' }}
-                        onChange={handleImageChange}
-                        accept="image/*"
-                        className=''
-                     />
+        <div className={firstStage}>
+            <div className="pl-1.5 text-black">
+                <p className='ml-4 text-2xl font-semibold '>Register Student</p>
+                <p className='ml-4 text-sm text-zinc-400 mb-4'>Fill in Student details</p>
+                
+                <div className="ml-4 flex justify-start items-start forms">
+                    <div className="text-xs text-zinc-600">
+                    <div>
+                        <label htmlFor="file-upload" className='flex justify-center items-center custom-file-upload'>
+                            <div className="">
+                                {/* <div className="image-placeholder">
+                                    {base64Image ? (
+                                        <img src={base64Image} alt="Profile" className='selected-profile'/>
+                                    ) : (
+                                        <>
+                                            <div className="flex justify-center rounded-lg items-center text-white bg-gray-200 p-3 w-[100px] h-[100px] ml-4">
+                                                <FontAwesomeIcon icon={faUser} />
+                                            </div>
+                                        </>
+                                    )}
+                                </div> */}
+                                    {/* <div className="webcam-container">
+                                        <Webcam
+                                            audio={false}
+                                            height={200}
+                                            ref={webcamRef}
+                                            screenshotFormat="image/jpeg"
+                                            width={220}
+                                            videoConstraints={videoConstraints}
+                                        />
+                                    </div>
+                                    <div className='capitalize text-center  text-sm py-4' onClick={capture}>Capture image</div> */}
+                            </div>
+                        </label>
+                        {/* <input
+                            id="file-upload"
+                            type="file"
+                            style={{ display: 'none' }}
+                            onChange={handleImageChange}
+                            accept="image/*"
+                            className=''
+                        /> */}
                     </div>
-                    <div className="flex mt-3">
-                    <div className="">
-                        <p className="flex justify-start items-start my-1.5 text-zinc-600 text-xs font-medium">
-                            Student Name
-                        </p>
-                        
-                        <input type="text" className='lect-input rounded-sm w-40 text-zinc-600 text-xs font-light' placeholder='e.g John Doe'/>
-                    </div>
-
-                    <div className="ml-3">
-                        <p className="flex justify-start items-start my-1.5 text-zinc-600 text-xs font-medium">
-                            Matric No.
-                        </p>
-                        
-                        <input type="text" className='lect-input rounded-sm w-40 font-light' placeholder='e.g 20/0302'/>
-                    </div>
-                    </div>
-
-                    <div className="mt-3">
-                        <p className="flex justify-start items-start my-1.5 text-zinc-600 text-xs font-medium">
-                            Faculty
-                        </p>
-                        
-                        <input type="text" className='lect-input rounded-sm w-[100%] font-light' placeholder='e.g Computing and Engineering Sciences'/>
-                    </div>
-
-
-                    <div className="flex mt-3">
+                        <div className="flex mt-3">
                         <div className="">
                             <p className="flex justify-start items-start my-1.5 text-zinc-600 text-xs font-medium">
-                                Level 
+                                Student Name
                             </p>
-                        
-                            <input type="text" className='lect-input rounded-sm w-40 font-light'placeholder='e.g. 400L'/>
+                            
+                            <input type="text" className='lect-input rounded-sm w-40 text-zinc-600 text-xs font-light' placeholder='e.g John Doe'/>
                         </div>
 
                         <div className="ml-3">
                             <p className="flex justify-start items-start my-1.5 text-zinc-600 text-xs font-medium">
-                                Department
+                                Matric No.
                             </p>
-                        
-                            <input type="text" className='lect-input rounded-sm w-40 font-light' placeholder='e.g. Software Engineering'/>
+                            
+                            <input type="text" className='lect-input rounded-sm w-40 font-light' placeholder='e.g 20/0302'/>
                         </div>
-                    </div>
-                    
-                    
-                    {/* <div className="mt-3">
-                        <p className="flex justify-start items-start my-1.5 text-zinc-600 text-xs font-medium">
-                           Schedule 1
-                        </p>
+                        </div>
+
+                        <div className="mt-3">
+                            <p className="flex justify-start items-start my-1.5 text-zinc-600 text-xs font-medium">
+                                Faculty
+                            </p>
+                            
+                            <input type="text" className='lect-input rounded-sm w-[100%] font-light' placeholder='e.g Computing and Engineering Sciences'/>
+                        </div>
+
+
+                        <div className="flex mt-3">
+                            <div className="">
+                                <p className="flex justify-start items-start my-1.5 text-zinc-600 text-xs font-medium">
+                                    Level 
+                                </p>
+                            
+                                <input type="text" className='lect-input rounded-sm w-40 font-light'placeholder='e.g. 400L'/>
+                            </div>
+
+                            <div className="ml-3">
+                                <p className="flex justify-start items-start my-1.5 text-zinc-600 text-xs font-medium">
+                                    Department
+                                </p>
+                            
+                                <input type="text" className='lect-input rounded-sm w-40 font-light' placeholder='e.g. Software Engineering'/>
+                            </div>
+                        </div>
                         
-                        <input type="text" className='lect-input rounded-sm w-[100%]' placeholder='Add class schedule'/>
-                    </div> */}
+                        
+                        {/* <div className="mt-3">
+                            <p className="flex justify-start items-start my-1.5 text-zinc-600 text-xs font-medium">
+                            Schedule 1
+                            </p>
+                            
+                            <input type="text" className='lect-input rounded-sm w-[100%]' placeholder='Add class schedule'/>
+                        </div> */}
 
-                    {/* {addSchedule} */}
-{/* 
-                    <div className="flex justify-end items-end my-5">
-                        <p className='text-xxs mr-2'>Add Another Schedule </p>
-                        <button className='bg-green-500 text-white rounded-full text-sm px-1.5' onClick={handleAddSchedule}>
-                            +
-                        </button>
-                    </div> */}
+                        {/* {addSchedule} */}
+    {/* 
+                        <div className="flex justify-end items-end my-5">
+                            <p className='text-xxs mr-2'>Add Another Schedule </p>
+                            <button className='bg-green-500 text-white rounded-full text-sm px-1.5' onClick={handleAddSchedule}>
+                                +
+                            </button>
+                        </div> */}
 
-                    
+                        
 
-                    <div className="flex justify-center items-center">
-                        <ActionBtn name='Register Student' />
+                        <div className="" onClick={handleNext}>
+                            <ActionBtn name='Next' />
+                        </div>
                     </div>
                 </div>
             </div>
+        </div>
+
+        <div className={secondStage}>
+            <WebcamCapture />
         </div>
     </>
   )

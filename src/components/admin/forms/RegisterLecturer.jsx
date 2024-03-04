@@ -3,8 +3,64 @@ import ActionBtn from '../global/ActionBtn';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 
-export default function RegisterLecturer() {
+import axios from '../../../api/url'
+import { SessionContext } from '../../../context/SessionProvider';
+const REGISTER_LECTURER_URL = `/Admin/RegisterLecturer`
 
+
+export default function RegisterLecturer() {
+    const { token } = useContext(SessionContext)
+
+    const [firstName, setFirstName] = useState("")
+    const [lastName, setLastName] = useState("")
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+    const [userName, setUserName] = useState("")
+
+    const firstRef = useRef()
+    const lastRef = useRef()
+    const emailRef = useRef()
+    const passwordRef = useRef()
+    const userRef = useRef()
+
+
+
+    const handleRegister = async (e) =>{
+        e.preventDefault();
+
+        const formData = {
+            sessionKey: token,
+            firstName: firstName,
+            lastName: lastName,
+            userName: userName,
+            email: email,
+            password: password,
+        }
+
+        console.log(formData)
+
+        try{
+            const response = await axios.post(
+                REGISTER_LECTURER_URL,
+                formData,
+               // JSON.stringify({
+                //     formData
+                
+                {
+                    headers: {
+                      "Content-Type": "application/json",
+                      Accept: "application/json",
+                    },
+                    credentials: true,
+                  }
+            )
+
+            console.log(response.data)
+        }
+        catch(err){
+            console.log(err)
+        }
+    }
 
     const [addSchedule, setAddSchedule] = useState(1);
     const [scheduleNo, setScheduleNo] = useState();
@@ -40,6 +96,8 @@ export default function RegisterLecturer() {
         reader.readAsDataURL(file);
       }
     };
+
+
 
 
   return (
@@ -78,18 +136,30 @@ export default function RegisterLecturer() {
                     <div className="flex ">
                     <div className="">
                         <p className="flex justify-start items-start my-1.5 text-zinc-600 text-xs font-medium">
-                            Lecturer Name
+                            Lecturer First Name
                         </p>
                         
-                        <input type="text" className='lect-input rounded-sm w-40 text-zinc-600 text-xs font-light' placeholder='e.g John Doe'/>
+                        <input 
+                            type="text" 
+                            className='lect-input rounded-sm w-40 text-zinc-600 text-xs font-light' 
+                            placeholder='e.g John'
+                            ref={firstRef}
+                            onChange={((e) => setFirstName(e.target.value))}
+                        />
                     </div>
 
                     <div className="ml-3">
                         <p className="flex justify-start items-start my-1.5 text-zinc-600 text-xs font-medium">
-                            Lecturer ID
+                            Lecturer Last Name
                         </p>
                         
-                        <input type="text" className='lect-input rounded-sm w-40 font-light' placeholder='e.g 20/0302'/>
+                        <input 
+                            type="text" 
+                            className='lect-input rounded-sm w-40 font-light' 
+                            placeholder='e.g Doe'
+                            ref={lastRef}
+                            onChange={((e) => setLastName(e.target.value))}
+                        />
                     </div>
                     </div>
 
@@ -98,7 +168,13 @@ export default function RegisterLecturer() {
                             Faculty
                         </p>
                         
-                        <input type="text" className='lect-input rounded-sm w-[100%] font-light' placeholder='e.g Computing and Engineering Sciences'/>
+                        <input 
+                            type="text" 
+                            className='lect-input rounded-sm w-[100%] font-light' 
+                            placeholder='e.g Computing and Engineering Sciences'
+                            ref={userRef}
+                            onChange={((e) => setUserName(e.target.value))}
+                        />
                     </div>
 
 
@@ -108,7 +184,13 @@ export default function RegisterLecturer() {
                                 Email 
                             </p>
                         
-                            <input type="text" className='lect-input rounded-sm w-40 font-light'placeholder='e.g. johndoe@gmail.com'/>
+                            <input 
+                                type="text" 
+                                className='lect-input rounded-sm w-40 font-light'
+                                placeholder='e.g. johndoe@gmail.com'
+                                ref={emailRef}
+                                onChange={((e) => setEmail(e.target.value))}
+                            />
                         </div>
 
                         <div className="ml-3">
@@ -116,7 +198,14 @@ export default function RegisterLecturer() {
                                 Department
                             </p>
                         
-                            <input type="text" className='lect-input rounded-sm w-40 font-light' placeholder='e.g. Software Engineering'/>
+                            <input 
+                                type="text" 
+                                className='lect-input rounded-sm w-40 font-light' 
+                                placeholder='e.g. Software Engineering'
+                                ref={passwordRef}
+                                onChange={((e) => setPassword(e.target.value))}
+                            />
+                                
                         </div>
                     </div>
                     
@@ -140,7 +229,7 @@ export default function RegisterLecturer() {
 
                     
 
-                    <div className="flex justify-center items-center">
+                    <div className="flex justify-center items-center" onClick={handleRegister}>
                         <ActionBtn name='Register Lecturer' />
                     </div>
                 </div>

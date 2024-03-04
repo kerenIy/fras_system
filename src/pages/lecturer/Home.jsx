@@ -11,7 +11,7 @@ export default function Home() {
             </div>
 
             <div className="bg-zinc-100 section-container order-1">
-            <LecturerContainer />
+              <LecturerContainer />
             </div>
         </div>
     </>

@@ -7,7 +7,7 @@ export default function Cards() {
   return (
     <>
         <div className="lect-cards">
-            <div className="bg-white border flex w-44 px-4 py-7 rounded-lg mb-4">
+            <div className="bg-white border flex w-44 px-4 py-9 rounded-lg mb-6">
                 <FontAwesomeIcon icon={faGoogleScholar} className='mt-2 border rounded-full primary-text-blue p-1.5'/>
                 <div className="ml-4">
                   <p className='text-base font-medium '>231</p>
@@ -15,7 +15,7 @@ export default function Cards() {
                 </div>
             </div>
 
-            <div className="bg-white border flex px-4 py-7 rounded-lg mb-4">
+            <div className="bg-white border flex px-4 py-9 rounded-lg mb-4">
                 <FontAwesomeIcon icon={faChalkboard} className='mt-2 border rounded-full primary-text-blue p-1.5'/>
                 <div className="ml-4">
                   <p className='text-base font-medium '>12</p>

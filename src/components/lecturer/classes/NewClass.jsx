@@ -30,7 +30,7 @@ export default function NewClass() {
         <div className="pl-1.5 text-black">
             <p className='text-2xl font-semibold'>Add a new class</p>
             
-            <div className="flex justify-start items-start forms">
+            <div className="ml-5 flex justify-start items-start forms">
                 <div className="text-xs text-zinc-600">
                     <div className="flex mt-3">
                     <div className="">

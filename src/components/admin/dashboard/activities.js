@@ -39,4 +39,12 @@ export const activities = [
         status: 'completed',
 
     },
+    {
+        number: 6,
+        id: '#1456',
+        name: 'Added new department to Facier',
+        date: '31/01/24',
+        status: 'completed',
+
+    },
 ]

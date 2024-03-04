@@ -73,12 +73,13 @@ export default function LecturerContainer() {
                     {/* <div className="feedback bg-white rounded-lg my-6 ml-4 mr-2.5">
                         <img src={chart} alt="" className='rounded-lg'/>
                     </div> */}
-                    <Recent />
+                    {/* <Recent /> */}
+                    
                 </div>
 
                 
 
-                <div className="bg-white rounded-lg mr-3 p-4 mt-5 border mb-3 pt-4" style={{ width: '290px', fontSize: '0.4rem' ,}}>
+                <div className="bg-white rounded-lg mr-3 p-4 mt-5 border mb-3 pt-4" style={{ width: '330px', fontSize: '0.4rem' ,}}>
                     <FullCalendar
                         plugins={[ dayGridPlugin ]}
                         initialView="dayGridMonth"
@@ -90,7 +91,12 @@ export default function LecturerContainer() {
 
                     <hr />
 
-                    <p className='text-base text-medium mt-6 primary-text-blue'>Schedule</p>
+                </div>
+            </div>
+
+            {/* <div className="bg-white p-6 rounded-lg mr-[13px] ml-[18px] mb-[10px]">
+                
+                     <p className='text-base text-medium primary-text-blue'>Schedule</p>
                     
                     <div className="mt-4">
                         <ScheduleItem 
@@ -109,10 +115,8 @@ export default function LecturerContainer() {
                             class='Measurements & Metrics' 
                         />
                     </div>
-
-
-                </div>
-            </div>
+            </div> */}
+            <br />
         </div>
     </>
   )

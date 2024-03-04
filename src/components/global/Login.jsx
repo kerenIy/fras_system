@@ -9,7 +9,68 @@ import { faReceipt } from '@fortawesome/free-solid-svg-icons'
 
 import { Link } from 'react-router-dom'
 
+import { useRef, useEffect, useState, useContext } from 'react'
+import axios from "../../api/url"
+import { AuthContext } from '../../context/AuthProvider'
+import { SessionContext } from '../../context/SessionProvider'
+
+const LOGIN_URL =`/Admin/Login`
+
 export default function Login(props) {
+
+
+
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+
+  const { setAuth } = useContext(AuthContext)
+  const { setToken } = useContext(SessionContext)
+
+  const emailRef = useRef()
+  const passwordRef = useRef()
+
+  useEffect(() =>{
+    // emailRef.current.focus();
+    // passwordRef.current.focus();
+  })
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    console.log(email)
+    console.log(password)
+
+    try{
+        const response = await axios.post(
+            LOGIN_URL,
+            JSON.stringify({
+                userName: email,
+                password: password,
+            }),
+            {
+                headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+                },
+                withCredentials: true,
+            }
+        );
+
+        const sessionKey = response.data.sessionKey;
+        
+        console.log(response.data)
+        setAuth({email, password});
+        setToken(sessionKey)
+    }
+    catch(err){
+        if(err == 400){
+            console.log('Invalid Username or Password')
+        }
+        else{
+            console.log(err)
+        }
+    }
+  }
   return (
     <>
         <div className="login flex justify-center items-center">
@@ -51,18 +112,32 @@ export default function Login(props) {
                 <form action="" className='my-4 login-form'>
                     <div className="flex justify-between items-center">
                         <label htmlFor="" className='text-base font-normal'>Username:</label>
-                        <input type="text" placeholder='Enter username' className='ml-2 text-sm font-light'/>
+                        <input 
+                            type="text" 
+                            placeholder='Enter username' 
+                            className='ml-2 text-sm font-light' 
+                            ref={emailRef}
+                            onChange={((e) => setEmail(e.target.value))}
+                            
+                        />
                     </div>
                     <br />
 
                     <div className="flex justify-between items-center">
                         <label htmlFor="" className='text-base  font-normal'>Password:</label>
-                        <input type="text" placeholder='Enter password' className='ml-2 text-sm font-light'/>
+                        <input 
+                            type="text" 
+                            placeholder='Enter password' 
+                            className='ml-2 text-sm font-light' 
+                            ref={passwordRef}
+                            onChange={((e) => setPassword(e.target.value))}
+                            
+                        />
                     </div>
                 </form>
 
-                <button className="form-btn py-2 font-medium rounded-sm text-base capitalize mt-4">
-                    <Link to={props.link}>Log In<span className='ml-3'>&rarr;</span></Link>
+                <button className="form-btn py-2 font-medium rounded-sm text-base capitalize mt-4" onClick={handleSubmit}>
+                    <Link >Log In<span className='ml-3'>&rarr;</span></Link>
                 </button> 
 
                 <div className="mt-7 flex justify-end items-end">
