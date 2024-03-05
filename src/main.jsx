@@ -5,6 +5,9 @@ import './global.css'
 import './components/admin/admin.css'
 import './components/lecturer/lecturer.css'
 
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify'
+
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Root from './pages/Root.jsx'
 import Roles from './pages/Roles.jsx'
@@ -17,6 +20,8 @@ import ClassView from './pages/lecturer/classes/ClassView.jsx'
 import WebcamCapture from './components/admin/forms/captureImage.jsx'
 import AttendanceList from './components/lecturer/classes/AttendanceList.jsx'
 import Attendance from './components/lecturer/classes/Attendance.jsx'
+import { AuthProvider } from './context/AuthProvider.jsx'
+import { SessionProvider } from './context/SessionProvider.jsx'
 
 
 
@@ -65,6 +70,11 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <ToastContainer />
+    <SessionProvider>
+      <AuthProvider>
+        <RouterProvider router={router} />
+      </AuthProvider>
+    </SessionProvider>
   </React.StrictMode>,
 )

@@ -250,3 +250,9 @@ input{
   table{
     width: 100%;
   }
+  .Toastify__toast-body{
+    font-family : 'DM Sans', sans-serif; /* Customize the font family */
+    width: 1500px; /* Customize the width */
+    font-size: 15px;
+    height: 50px;
+  }

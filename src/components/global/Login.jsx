@@ -14,11 +14,13 @@ import axios from "../../api/url"
 import { AuthContext } from '../../context/AuthProvider'
 import { SessionContext } from '../../context/SessionProvider'
 
+import { success, failure } from '../../classes/Notifications'
+
 const LOGIN_URL =`/Admin/Login`
 
 export default function Login(props) {
 
-
+    let message = ""
 
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
@@ -61,13 +63,20 @@ export default function Login(props) {
         console.log(response.data)
         setAuth({email, password});
         setToken(sessionKey)
+        message = "Login Successful"
+        success(message)
     }
     catch(err){
-        if(err == 400){
-            console.log('Invalid Username or Password')
+        if(err.message == "Request failed with status code 400"){
+            message ='Invalid Username or Password'
+            failure(message)
+
         }
         else{
             console.log(err)
+            message = err.message
+            failure(message)
+
         }
     }
   }
