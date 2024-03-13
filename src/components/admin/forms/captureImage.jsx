@@ -7,7 +7,18 @@ import { faUser } from '@fortawesome/free-solid-svg-icons';
 import Webcam from 'react-webcam';
 import { useNavigate } from 'react-router-dom';
 
-const WebcamCapture = () => {
+import { StudentContext } from '../../../context/StudentProvider';
+import { SessionContext } from '../../../context/SessionProvider';
+
+import axios from '../../../api/url'
+import { failure, success } from '../../../classes/Notifications';
+
+const REGISTER_STUDENT = `/Admin/RegisterStudent`
+
+const WebcamCapture = ({student}) => {
+
+  const {formData} = useContext(StudentContext)
+  const {token} = useContext(SessionContext)
 
   const directions =[
     {
@@ -29,20 +40,32 @@ const WebcamCapture = () => {
 
   ];
 
-  const imagesStore = [
-
-  ]
-
   let item = 0
-  // const [item, setItem] = useState(0)
 
  const [direction, setDirections] = useState(directions[item].text)
  const [number, setNumber] = useState(1)
 
+ const [passport, setPassport] = useState("")
+
  const [isComplete, setIsComplete] = useState(false)
+ const [imageBlob, setImageBlob] = useState(null)
 
  
  const webcamRef = useRef(null);
+
+ 
+ const [blobData, setBlobData] = useState(null);
+
+
+ const fetchAndConvertToBlob = async (image) => {
+ try {
+     const response = await fetch(image);
+     const blobData = await response.blob();
+     setBlobData(blobData); // Store the blob data in state
+ } catch (error) {
+     console.error("Error fetching image:", error);
+ }
+ };
 
 
  const capture = useCallback(() => {
@@ -54,33 +77,74 @@ const WebcamCapture = () => {
     else {
       setDirections('Complete')
       setIsComplete(true)
-      console.log(imagesStore)
     }
 
     // setItem(item)
 
     
     const imageSrc = webcamRef.current.getScreenshot();
+    fetchAndConvertToBlob(imageSrc)
+    // setPassport(imageSrc)
+    // formData.passport = imageSrc
     // Create a link element
-    const link = document.createElement('a');
-    link.href = imageSrc;
-    link.download = 'capturedImage.jpeg'; // Set the file name
-    imagesStore.push(link.download)
-    // Append the link to the body
-    document.body.appendChild(link);
+    // const link = document.createElement('a');
+    // link.href = imageSrc;
+    // link.download = 'capturedImage.jpeg'; // Set the file name
+    // // Append the link to the body
+    // document.body.appendChild(link);
     // Simulate click to download the image
     link.click();
     // Remove the link from the body
     document.body.removeChild(link);
    }, [webcamRef]);
 
- const videoConstraints = {
-    width: 220,
-    height: 200,
-    facingMode: "user"
- };
+  const videoConstraints = {
+      width: 220,
+      height: 200,
+      facingMode: "user"
+  };
 
-//  console.log(images)
+  //  console.log(images)
+
+
+  const handleSubmit = async () =>{
+
+    // fetchAndConvertToBlob(passport)
+
+
+    let message = ""
+    formData.SessionKey = token;
+    formData.Passport = blobData;
+    console.log(formData)
+
+
+
+    try{
+      const response = await axios.post(
+        REGISTER_STUDENT,
+        formData,
+        {
+          headers: {
+          "Content-Type": "multipart/form-data",
+          "Accept": "multipart/form-data",
+          },
+          withCredentials: true,
+      }
+      );
+
+      message = "Student Registered Successfully",
+      success(message)
+      console.log(response.data.data)
+
+    }
+
+    catch(err){
+      console.log(err)
+      message = "Failed to Register Student. Try Again!"
+      failure(message)
+    }
+
+  }
 
  return (
   <div className="pl-1.5 text-black">
@@ -118,12 +182,12 @@ const WebcamCapture = () => {
 
       {
         isComplete?
-          <button className="w-[100%} text-center admin-btn py-1.5 px-7 font-light rounded-sm text-sm capitalize mt-4">
+          <button className="w-[100%} text-center admin-btn py-1.5 px-7 font-light rounded-sm text-sm capitalize mt-4" onClick={handleSubmit}>
             {/* <Link to={props.link}>{props.name}</Link> */}
             Submit
           </button>
         :
-          <p className="w-[100%] text-center not-complete-btn py-1.5 px-7 font-light rounded-sm text-sm capitalize mt-4">
+          <p className="w-[100%] text-center not-complete-btn py-1.5 px-7 font-light rounded-sm text-sm capitalize mt-4" onClick={handleSubmit}>
               {/* <Link to={props.link}>{props.name}</Link> */}
               Submit
           </p>

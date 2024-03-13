@@ -3,19 +3,65 @@ import Cards from './Cards'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch, faBell, faChevronRight } from '@fortawesome/free-solid-svg-icons'
 
-import user from '../../../assets/user.jpg'
-import chart from '../../../assets/admin_chart.svg'
 import growth from '../../../assets/growth.svg'
 
 import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid' // a plugin!
 
-import { activities } from './activities'
+import { useContext, useEffect, useState } from "react"
+import axios from "../../../api/url"
+const VIEW_LOGS = `Admin/ViewLogs`
 
+import { SessionContext } from "../../../context/SessionProvider"
 
 export default function Container() {
 
-    const data = activities;
+    const [data, setData] = useState([
+        {
+            "type": 0,
+        "description": "Loading Logs",
+        "id": 3,
+        "timeCreated": "2024-03-11T13:54:47.44393+00:00",
+        "timeUpdated": "2024-03-11T13:54:47.44393+00:00"
+        }
+    ])
+    const {token} = useContext(SessionContext)
+
+    
+
+    useEffect(() => {
+      const  formData = {
+        sessionKey: token
+      }
+      const getAllLogs = async () =>{
+        try{
+            const response = await axios.post(VIEW_LOGS, formData,
+                {
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Accept": "application/json",
+                      },
+                      credentials: true,
+            })
+            const dataArray = response.data.data
+            setData(dataArray)
+            
+        }
+        catch(err){
+            console.log(err)
+        }
+      }
+
+      getAllLogs()
+
+    }, [data])
+    
+    const formatDate = (dateItem) => {
+        const truncateString = dateItem.substring(0, dateItem.length - 22);
+        return truncateString;
+    };
+    
+
 
   return (
     <>
@@ -46,27 +92,26 @@ export default function Container() {
                     <p className='ml-6 mt-7 font-normal text-xl text-zinc-600'>Recent Activities</p>
                     <table className='border rounded-lg ml-6 mt-2' >
                         <tr className='header rounded-lg text-sm' style={{ borderTop: '1px dotted #000', width: '100%', height: '1px' }}>
-                            <th className='px-6'>No</th>
+                            {/* <th className='px-6'>No</th> */}
                             <th className='px-6'>ID</th>
                             <th className='px-6'>Details</th>
-                            <th className='px-6'>Date</th>
-                            <th className='px-6'>Status</th>
+                            <th className='px-6'>Time Created</th>
+                            <th className='px-6'>Time Updated</th>
                         </tr>
 
                         {data.map((item) =>(
                             <>
                                 <tr className='text-zinc-600 text-xs py-1.5' style={{ borderTop: '1px dotted #000', width: '100%', height: '1px' }}>
-                                    <td className='font-medium text-yellow-400 px-6'>0{item.number}</td>
-                                    <td className='font-medium px-4'>{item.id}</td>
-                                    <td className=' px-6'>{item.name}</td>
-                                    <td className=' px-6'>{item.date}</td>
-                                    <td className=' px-6'>
-                                        <p className='bg-zinc-100 m-2 p-1 text-green-600 rounded-md'>{item.status}</p>
-                                    </td>
+                                    <td className='text-center font-medium px-4'>{item.id}</td>
+                                    <td className='capitalize px-6 text-center'>{item.description}</td>
+                                    <td className='text-center px-6'>{formatDate(item.timeCreated)}</td>
+                                    <td className='text-center px-6'>{formatDate(item.timeUpdated)}</td>
+                                
                                 </tr>
                             </>
                         ))}
                     </table>
+                    
                 </div>
 
                 <div className="mt-14 pt-1 ml-5" style={{ width: '300px', fontSize: '0.5rem' ,}}>

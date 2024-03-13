@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useContext, useEffect, useState} from 'react'
 import {classList} from './class'
 import ClassItem from './ClassItem'
 import NewClass from './NewClass'
@@ -10,12 +10,26 @@ import image3 from '../../../assets/brose flower.svg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faX } from '@fortawesome/free-solid-svg-icons'
 
+import { SessionContext } from '../../../context/SessionProvider'
+import { failure } from '../../../classes/Notifications'
 
+import axios from "../../../api/url"
+const GET_CLASSES = `Lecturer/ViewAllClasses`
 
 export default function ClassContainer() {
-    const classes = classList
+    const {token} = useContext(SessionContext)
 
     const [showPopup, setShowPopup] = useState(false)
+    const [classes, setClasses] = useState([
+        {
+            id: 1,
+            colorScheme: 'bg-[#BA68C8] color-scheme',
+            courseTitle: 'Software Quality & Testing',
+            level: '400L',
+            department: 'Software Engineering',
+            courseCode: 'SENG 412',
+        },
+    ])
 
     const handleOpenPopup = () =>{
         setShowPopup(true);
@@ -24,6 +38,36 @@ export default function ClassContainer() {
     const handleClosePopup = () =>{
         setShowPopup(false);
     }
+
+    useEffect(() =>{
+        const getAllClasses = async () =>{
+            let message = ``
+
+            const formData ={
+                SessionKey: token,
+            }
+    
+            try{
+                const response = await axios.post(GET_CLASSES, formData,{
+                    headers: {
+                        "Content-Type": "multipart/form-data",
+                        "Accept": "multipart/form-data",
+                      },
+                      credentials: true,
+                })
+    
+                // console.log(response.data.data)
+                // setClasses(response.data)
+            }
+            catch(err){
+                message = "Failed to Load Classes"
+                failure(message)
+                console.log(err)
+            }
+        }
+
+        getAllClasses()
+    }, classes)
 
   return (
     <>

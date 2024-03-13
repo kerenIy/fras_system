@@ -5,11 +5,15 @@ import { faUser } from '@fortawesome/free-solid-svg-icons';
 
 import axios from '../../../api/url'
 import { SessionContext } from '../../../context/SessionProvider';
+import { failure, success } from '../../../classes/Notifications';
+
 const REGISTER_LECTURER_URL = `/Admin/RegisterLecturer`
 
 
 export default function RegisterLecturer() {
+    let message = ""
     const { token } = useContext(SessionContext)
+
 
     const [firstName, setFirstName] = useState("")
     const [lastName, setLastName] = useState("")
@@ -27,6 +31,9 @@ export default function RegisterLecturer() {
 
     const handleRegister = async (e) =>{
         e.preventDefault();
+
+        // const sessionToken = JSON.stringify(token)
+        // console.log(sessionToken)
 
         const formData = {
             sessionKey: token,
@@ -52,13 +59,17 @@ export default function RegisterLecturer() {
                       Accept: "application/json",
                     },
                     credentials: true,
-                  }
+                }
             )
 
-            console.log(response.data)
+            console.log(`this is the response: ${response}`)
+            message = "Account Created Successfully"
+            success(message)
         }
         catch(err){
-            console.log(err)
+            console.log()
+            message = "Password must contain 1 digit , 1 uppercase and 1 Ascii character"
+            failure(message)
         }
     }
 
@@ -165,15 +176,15 @@ export default function RegisterLecturer() {
 
                     <div className="mt-3">
                         <p className="flex justify-start items-start my-1.5 text-zinc-600 text-xs font-medium">
-                            Faculty
+                            Email
                         </p>
                         
                         <input 
                             type="text" 
                             className='lect-input rounded-sm w-[100%] font-light' 
-                            placeholder='e.g Computing and Engineering Sciences'
-                            ref={userRef}
-                            onChange={((e) => setUserName(e.target.value))}
+                            placeholder='e.g. johndoe@gmail.com'
+                            ref={emailRef}
+                            onChange={((e) => setEmail(e.target.value))}
                         />
                     </div>
 
@@ -181,27 +192,27 @@ export default function RegisterLecturer() {
                     <div className="flex mt-3">
                         <div className="">
                             <p className="flex justify-start items-start my-1.5 text-zinc-600 text-xs font-medium">
-                                Email 
+                                UserName 
                             </p>
                         
                             <input 
                                 type="text" 
                                 className='lect-input rounded-sm w-40 font-light'
-                                placeholder='e.g. johndoe@gmail.com'
-                                ref={emailRef}
-                                onChange={((e) => setEmail(e.target.value))}
+                                placeholder='e.g. johnDoe24'
+                                ref={userRef}
+                                onChange={((e) => setUserName(e.target.value))}
                             />
                         </div>
 
                         <div className="ml-3">
                             <p className="flex justify-start items-start my-1.5 text-zinc-600 text-xs font-medium">
-                                Department
+                                Password
                             </p>
                         
                             <input 
                                 type="text" 
                                 className='lect-input rounded-sm w-40 font-light' 
-                                placeholder='e.g. Software Engineering'
+                                placeholder='********'
                                 ref={passwordRef}
                                 onChange={((e) => setPassword(e.target.value))}
                             />

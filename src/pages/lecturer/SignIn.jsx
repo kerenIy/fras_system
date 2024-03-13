@@ -1,10 +1,9 @@
 import React from 'react'
-import Login from '../../components/global/Login'
-
+import Sign from "../../components/global/SignIn"
 export default function SignIn() {
     return (
         <>
-            <Login role='Lecturer' bar1='Manage Classes' bar2='Manage Records' bar3='Monitor Students' link='/lecturer/home'/>
+            <Sign role='Lecturer' bar1='Manage Classes' bar2='Manage Records' bar3='Monitor Students' link='/lecturer/home'/>
         </>
       )
 }

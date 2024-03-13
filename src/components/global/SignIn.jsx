@@ -16,7 +16,7 @@ import { SessionContext } from '../../context/SessionProvider'
 
 import { success, failure } from '../../classes/Notifications'
 
-const LOGIN_URL =`/Admin/Login`
+const LOGIN_URL =`/Lecturer/Login`
 
 export default function Login(props) {
 
@@ -67,7 +67,7 @@ export default function Login(props) {
         console.log(sessionKey)
         message = "Login Successful"
         success(message)
-        navigate('/admin/home')
+        navigate('/lecturer/home')
     }
     catch(err){
         if(err.message == "Request failed with status code 400"){

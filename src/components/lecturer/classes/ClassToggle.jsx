@@ -20,7 +20,7 @@ export default function ClassToggle() {
         },
         {
             id: 3,
-            label: 'Attendance Records',
+            label: 'Attendance ',
             // content: 'Attendance'
             // content: <Attendance />
             content : <AttendanceList />

@@ -22,6 +22,10 @@ import AttendanceList from './components/lecturer/classes/AttendanceList.jsx'
 import Attendance from './components/lecturer/classes/Attendance.jsx'
 import { AuthProvider } from './context/AuthProvider.jsx'
 import { SessionProvider } from './context/SessionProvider.jsx'
+import { StudentProvider } from './context/StudentProvider.jsx'
+import Students from './pages/admin/dashboard/Students.jsx'
+import ViewLecturers from './pages/admin/dashboard/ViewLecturers.jsx'
+
 
 
 
@@ -48,6 +52,14 @@ const router = createBrowserRouter([
     path: '/admin/home',
     element: <Dashboard />
   },
+  {
+    path: '/admin/students',
+    element: <Students />
+  },
+  {
+    path: '/admin/lecturers',
+    element: <ViewLecturers />
+  },
 
   //pages for the lecturer admin dashboard
   {
@@ -73,7 +85,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <ToastContainer />
     <SessionProvider>
       <AuthProvider>
-        <RouterProvider router={router} />
+        <StudentProvider>
+          <RouterProvider router={router} />
+        </StudentProvider>
       </AuthProvider>
     </SessionProvider>
   </React.StrictMode>,

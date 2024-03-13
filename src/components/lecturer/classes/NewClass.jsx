@@ -1,7 +1,15 @@
 import React, {useState, useEffect, useContext, useRef} from 'react'
 import GreenBtn from '../global/GreenBtn';
 
+import axios from "../../../api/url"
+const CREATE_CLASS = `Lecturer/CreateClass`
+
+import { SessionContext } from '../../../context/SessionProvider';
+import { failure, success } from '../../../classes/Notifications';
+
 export default function NewClass() {
+
+    const {token} = useContext(SessionContext)
 
 
     const [addSchedule, setAddSchedule] = useState(1);
@@ -23,6 +31,42 @@ export default function NewClass() {
                 </div>,
             ]
         )
+    }
+
+    const [name, setName] = useState("")
+    const nameRef = useRef()
+
+    const handleSubmit = async (e) =>{
+        e.preventDefault();
+
+        const formData = {
+            sessionKey: token,
+            name: name,
+            classNumber: '1',
+        }
+
+        let message = ``
+
+        try{
+            const response = await axios.post(CREATE_CLASS, formData,{
+                
+                    headers: {
+                      "Content-Type": "application/json",
+                      Accept: "application/json",
+                    },
+                    credentials: true,
+                
+            })
+            message = "Class Created"
+            console.log(response)
+            success(message)
+        }
+        catch(err){
+            console.log(err)
+            message = "Failed to Create Class"
+            failure(message)
+        }
+
     }
 
   return (
@@ -55,7 +99,13 @@ export default function NewClass() {
                             Course Title
                         </p>
                         
-                        <input type="text" className='lect-input rounded-sm w-[100%] font-light' placeholder='e.g Software Quality and Testing'/>
+                        <input 
+                            type="text" 
+                            className='lect-input rounded-sm w-[100%] font-light' 
+                            placeholder='e.g Software Quality and Testing'
+                            ref={nameRef}
+                            onChange={((e) => setName(e.target.value))}
+                        />
                     </div>
 
 
@@ -97,7 +147,7 @@ export default function NewClass() {
 
                     
 
-                    <div className="flex">
+                    <div className="flex" onClick={handleSubmit}>
                         <GreenBtn name='Create Class' />
                     </div>
                 </div>

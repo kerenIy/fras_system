@@ -8,71 +8,16 @@ import Webcam from 'react-webcam';
 import { useNavigate } from 'react-router-dom';
 import WebcamCapture from './captureImage';
 
+import { StudentContext } from '../../../context/StudentProvider';
+
 export default function RegisterStudent() {
 
     const navigate = useNavigate();
-
-    // const webcamRef = useRef(null);
-
-
-    // const capture = useCallback(() => {
-    //    const imageSrc = webcamRef.current.getScreenshot();
-    //    // Create a link element
-    //    const link = document.createElement('a');
-    //    link.href = imageSrc;
-    //    link.download = 'capturedImage.jpeg'; // Set the file name
-    //    // Append the link to the body
-    //    document.body.appendChild(link);
-    //    // Simulate click to download the image
-    //    link.click();
-    //    // Remove the link from the body
-    //    document.body.removeChild(link);
-    //   }, [webcamRef]);
-   
-    // const videoConstraints = {
-    //    width: 220,
-    //    height: 200,
-    //    facingMode: "user"
-    // };
-
+    const {setFormData} = useContext(StudentContext)
+    
 
     const [addSchedule, setAddSchedule] = useState(1);
     const [scheduleNo, setScheduleNo] = useState();
-
-    // const videoRef = useRef(null)
-    // const [stream, setStream] = useState(null)
-
-
-    // useEffect(() => {
-    //     navigator.mediaDevices.getUserMedia({ video: true })
-    //       .then(stream => {
-    //         setStream(stream);
-    //         if (videoRef.current) {
-    //           videoRef.current.srcObject = stream;
-    //           videoRef.current.onloadedmetadata = (e) => videoRef.current.play();
-    //         }
-    //       })
-    //       .catch(err => {
-    //         console.error("An error occurred: " + err);
-    //       });
-    
-    //     return () => {
-    //       if (stream) {
-    //         stream.getTracks().forEach(track => track.stop());
-    //       }
-    //     };
-    //  }, []);
-    
-    // const captureImage = () => {
-    //     const canvas = document.createElement('canvas');
-    //     canvas.width = videoRef.current.videoWidth;
-    //     canvas.height = videoRef.current.videoHeight;
-    //     const ctx = canvas.getContext('2d');
-    //     ctx.drawImage(videoRef.current, 0, 0, canvas.width, canvas.height);
-    //     const imageDataUrl = canvas.toDataURL('image/png');
-    //     // Now you can use imageDataUrl as the source of an img element or send it to a server
-    //  };
-
     const handleAddSchedule = () =>{
         let number = scheduleNo + 1;
         setScheduleNo(number);
@@ -91,24 +36,32 @@ export default function RegisterStudent() {
         )
     }
 
-    // const [base64Image, setBase64Image] = useState('');
-
-    // const handleImageChange = (event) => {
-    //   const file = event.target.files[0];
-    //   if (file) {
-    //     const reader = new FileReader();
-    //     reader.onloadend = () => {
-    //       const base64String = reader.result;
-    //       setBase64Image(base64String);
-    //     };
-    //     reader.readAsDataURL(file);
-    //   }
-    // };
-
     const [firstStage, setFirstStage] = useState('')
     const [secondStage, setSecondStage] = useState('hidden')
 
-    const handleNext = () =>{
+    const [name, setName] = useState("")
+    const [matric, setMatric] = useState("")
+    const [classID, setClassID] = useState("")
+
+    const nameRef = useRef()
+    const matricRef = useRef()
+    const ClassRef = useRef()
+
+    let formData = {}
+
+    const handleNext = async (e) =>{
+        e.preventDefault();
+
+        formData = {
+            Name: name,
+            MatricNumber: matric,
+            ClassId: classID,
+        }
+
+        setFormData(formData)
+
+        console.log(formData)
+
         setFirstStage('hidden')
         setSecondStage('show')
     }
@@ -128,28 +81,7 @@ export default function RegisterStudent() {
                     <div>
                         <label htmlFor="file-upload" className='flex justify-center items-center custom-file-upload'>
                             <div className="">
-                                {/* <div className="image-placeholder">
-                                    {base64Image ? (
-                                        <img src={base64Image} alt="Profile" className='selected-profile'/>
-                                    ) : (
-                                        <>
-                                            <div className="flex justify-center rounded-lg items-center text-white bg-gray-200 p-3 w-[100px] h-[100px] ml-4">
-                                                <FontAwesomeIcon icon={faUser} />
-                                            </div>
-                                        </>
-                                    )}
-                                </div> */}
-                                    {/* <div className="webcam-container">
-                                        <Webcam
-                                            audio={false}
-                                            height={200}
-                                            ref={webcamRef}
-                                            screenshotFormat="image/jpeg"
-                                            width={220}
-                                            videoConstraints={videoConstraints}
-                                        />
-                                    </div>
-                                    <div className='capitalize text-center  text-sm py-4' onClick={capture}>Capture image</div> */}
+                             
                             </div>
                         </label>
                         {/* <input
@@ -167,7 +99,13 @@ export default function RegisterStudent() {
                                 Student Name
                             </p>
                             
-                            <input type="text" className='lect-input rounded-sm w-40 text-zinc-600 text-xs font-light' placeholder='e.g John Doe'/>
+                            <input 
+                                type="text" 
+                                className='lect-input rounded-sm w-40 text-zinc-600 text-xs font-light' 
+                                placeholder='e.g John Doe'
+                                ref={nameRef}
+                                onChange={((e) => setName(e.target.value))}
+                            />
                         </div>
 
                         <div className="ml-3">
@@ -175,17 +113,23 @@ export default function RegisterStudent() {
                                 Matric No.
                             </p>
                             
-                            <input type="text" className='lect-input rounded-sm w-40 font-light' placeholder='e.g 20/0302'/>
+                            <input 
+                                type="text" 
+                                className='lect-input rounded-sm w-40 font-light' 
+                                placeholder='e.g 20/0302'
+                                ref={matricRef}
+                                onChange={((e) => setMatric(e.target.value))}
+                            />
                         </div>
                         </div>
 
-                        <div className="mt-3">
+                        {/* <div className="mt-3">
                             <p className="flex justify-start items-start my-1.5 text-zinc-600 text-xs font-medium">
                                 Faculty
                             </p>
                             
                             <input type="text" className='lect-input rounded-sm w-[100%] font-light' placeholder='e.g Computing and Engineering Sciences'/>
-                        </div>
+                        </div> */}
 
 
                         <div className="flex mt-3">
@@ -194,15 +138,25 @@ export default function RegisterStudent() {
                                     Level 
                                 </p>
                             
-                                <input type="text" className='lect-input rounded-sm w-40 font-light'placeholder='e.g. 400L'/>
+                                <input 
+                                    type="text" 
+                                    className='lect-input rounded-sm w-40 font-light'
+                                    placeholder='e.g. 400L'
+                                />
                             </div>
 
                             <div className="ml-3">
                                 <p className="flex justify-start items-start my-1.5 text-zinc-600 text-xs font-medium">
-                                    Department
+                                    Class ID
                                 </p>
                             
-                                <input type="text" className='lect-input rounded-sm w-40 font-light' placeholder='e.g. Software Engineering'/>
+                                <input 
+                                    type="text" 
+                                    className='lect-input rounded-sm w-40 font-light' 
+                                    placeholder='e.g. SEB'
+                                    ref={ClassRef}
+                                    onChange={((e) => setClassID(e.target.value))}
+                                />
                             </div>
                         </div>
                         
@@ -235,7 +189,7 @@ export default function RegisterStudent() {
         </div>
 
         <div className={secondStage}>
-            <WebcamCapture />
+            <WebcamCapture student={formData}/>
         </div>
     </>
   )
