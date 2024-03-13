@@ -4,7 +4,7 @@ import Button from './Button'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-regular-svg-icons'
 import { faGear } from '@fortawesome/free-solid-svg-icons'
-import { faAreaChart } from '@fortawesome/free-solid-svg-icons'
+import { faAreaChart, faX } from '@fortawesome/free-solid-svg-icons'
 import { faReceipt } from '@fortawesome/free-solid-svg-icons'
 
 import { Link, useNavigate } from 'react-router-dom'
@@ -15,6 +15,9 @@ import { AuthContext } from '../../context/AuthProvider'
 import { SessionContext } from '../../context/SessionProvider'
 
 import { success, failure } from '../../classes/Notifications'
+import Loading from './Loading'
+
+import load from "../../assets/admin-loading.gif"
 
 const LOGIN_URL =`/Lecturer/Login`
 
@@ -29,6 +32,8 @@ export default function Login(props) {
   const { setAuth } = useContext(AuthContext)
   const { setToken } = useContext(SessionContext)
 
+  const [loading, setLoading] = useState(false)
+
   const emailRef = useRef()
   const passwordRef = useRef()
 
@@ -39,6 +44,7 @@ export default function Login(props) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true)
 
     console.log(email)
     console.log(password)
@@ -65,6 +71,7 @@ export default function Login(props) {
         setAuth({email, password});
         setToken(sessionKey)
         console.log(sessionKey)
+        setLoading(false)
         message = "Login Successful"
         success(message)
         navigate('/lecturer/home')
@@ -83,6 +90,7 @@ export default function Login(props) {
         }
     }
   }
+
   return (
     <>
         <div className="login flex justify-center items-center">
@@ -162,6 +170,20 @@ export default function Login(props) {
             <div className="hero-img">
                 <img src={admin} alt="" />
             </div>
+
+            {loading && (
+                 <div className="custom-popup">
+                 <div className="popup-content">
+                 <div className="flex justify-end items-end">
+                     {/* <FontAwesomeIcon icon={faX} className='text-black w-3 h-3' onClick={handleClosePopup}/> */}
+                 </div>
+     
+                 <div className="flex justify-center items-center">
+                     <Loading img={load}/>
+                 </div>
+                 </div>
+             </div>
+            )}
         </div>
 
     </>
