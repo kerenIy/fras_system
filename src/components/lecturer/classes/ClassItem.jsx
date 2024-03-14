@@ -16,7 +16,7 @@ export default function ClassItem(props) {
     }
   return (
     <>
-        <div className="class-item mx-1.5 text-white rounded-lg bg-white">
+        <div className="class-item mx-1.5 text-white rounded-lg bg-white border">
             <div className="relative rounded-lg">
                 <div className={props.colorScheme}>
                     <p className='text-sm font-medium '>{props.courseTitle}</p>

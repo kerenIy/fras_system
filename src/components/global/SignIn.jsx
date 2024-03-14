@@ -17,7 +17,7 @@ import { SessionContext } from '../../context/SessionProvider'
 import { success, failure } from '../../classes/Notifications'
 import Loading from './Loading'
 
-import load from "../../assets/admin-loading.gif"
+import load from "../../assets/dotss.gif"
 
 const LOGIN_URL =`/Lecturer/Login`
 
@@ -172,8 +172,8 @@ export default function Login(props) {
             </div>
 
             {loading && (
-                 <div className="custom-popup">
-                 <div className="popup-content">
+                 <div className="load-popup">
+                 <div className="load-content">
                  <div className="flex justify-end items-end">
                      {/* <FontAwesomeIcon icon={faX} className='text-black w-3 h-3' onClick={handleClosePopup}/> */}
                  </div>

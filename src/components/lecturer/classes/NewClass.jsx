@@ -2,10 +2,11 @@ import React, {useState, useEffect, useContext, useRef} from 'react'
 import GreenBtn from '../global/GreenBtn';
 
 import axios from "../../../api/url"
-const CREATE_CLASS = `Lecturer/CreateClass`
+const CREATE_CLASS = `Lecturer/CreateCourse`
 
 import { SessionContext } from '../../../context/SessionProvider';
 import { failure, success } from '../../../classes/Notifications';
+import userEvent from '@testing-library/user-event';
 
 export default function NewClass() {
 
@@ -34,15 +35,27 @@ export default function NewClass() {
     }
 
     const [name, setName] = useState("")
+    const [classID, setClassID] = useState(0)
+    const [courseCode, setCourseCode] = useState("")
+    const [level, setLevel] = useState("")
+    
     const nameRef = useRef()
+    const levelRef = useRef()
+    const codeRef = useRef()
+    const classRef = useRef()
 
     const handleSubmit = async (e) =>{
         e.preventDefault();
 
         const formData = {
             sessionKey: token,
-            name: name,
-            classNumber: '1',
+            title: name,
+            classID: classID,
+            courseCode: courseCode,
+            departmentID: 1,
+            lecturerID: 2,
+            level: level,
+
         }
 
         let message = ``
@@ -82,7 +95,8 @@ export default function NewClass() {
                             Course Code
                         </p>
                         
-                        <input type="text" className='lect-input rounded-sm w-40 text-zinc-600 text-xs font-light' placeholder='e.g SENG 412'/>
+                        <input type="text" className='lect-input rounded-sm w-40 text-zinc-600 text-xs font-light' placeholder='e.g SENG 412'
+                        ref={codeRef} onChange={((e) => setCourseCode(e.target.value))}/>
                     </div>
 
                     <div className="ml-3">
@@ -90,7 +104,7 @@ export default function NewClass() {
                             Department
                         </p>
                         
-                        <input type="text" className='lect-input rounded-sm w-40 font-light' placeholder='e.g Software Engineering'/>
+                        <input type="text" className='lect-input rounded-sm w-40 font-light' placeholder='e.g Software Engineering'  />
                     </div>
                     </div>
 
@@ -115,39 +129,39 @@ export default function NewClass() {
                                 Level Taken
                             </p>
                         
-                            <input type="text" className='lect-input rounded-sm w-40 font-light'placeholder='e.g. 400L'/>
+                            <input type="text" className='lect-input rounded-sm w-40 font-light'placeholder='e.g. 400L' ref={levelRef} onChange={((e) =>setLevel(e.target.value))}/>
                         </div>
 
                         <div className="ml-3">
                             <p className="flex justify-start items-start my-1.5 text-zinc-600 text-xs font-medium">
-                            Start Date
+                                Class ID
                             </p>
                         
-                            <input type="text" className='lect-input rounded-sm w-40 font-light' placeholder='DD/MM/YY'/>
+                            <input type="text" className='lect-input rounded-sm w-40 font-light' placeholder='DD/MM/YY' ref={classRef} onChange={((e) => setClassID(e.target.value))}/>
                         </div>
                     </div>
                     
-                    
+{/*                     
                     <div className="mt-3">
                         <p className="flex justify-start items-start my-1.5 text-zinc-600 text-xs font-medium">
                            Schedule 1
                         </p>
                         
                         <input type="text" className='lect-input rounded-sm w-[100%]' placeholder='Add class schedule'/>
-                    </div>
+                    </div> */}
 
                     {/* {addSchedule} */}
 
-                    <div className="flex justify-end items-end my-5">
+                    {/* <div className="flex justify-end items-end my-5">
                         <p className='text-xxs mr-2'>Add Another Schedule </p>
                         <button className='bg-green-500 text-white rounded-full text-sm px-1.5' onClick={handleAddSchedule}>
                             +
                         </button>
-                    </div>
+                    </div> */}
 
                     
 
-                    <div className="flex" onClick={handleSubmit}>
+                    <div className="flex mt-[5%]" onClick={handleSubmit}>
                         <GreenBtn name='Create Class' />
                     </div>
                 </div>

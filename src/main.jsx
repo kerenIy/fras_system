@@ -25,8 +25,11 @@ import { SessionProvider } from './context/SessionProvider.jsx'
 import { StudentProvider } from './context/StudentProvider.jsx'
 import Students from './pages/admin/dashboard/Students.jsx'
 import ViewLecturers from './pages/admin/dashboard/ViewLecturers.jsx'
+import { ClassProvider } from './context/ClassProvider.jsx'
+import Loading from './components/global/Loading.jsx'
 
 
+import load from "../src/assets/admin-loading.gif"
 
 
 const router = createBrowserRouter([
@@ -77,6 +80,10 @@ const router = createBrowserRouter([
   {
     path: '/attendance1',
     element: <Attendance />
+  },
+  {
+    path: "/loading",
+    element: <Loading img={load}/>
   }
 ])
 
@@ -86,7 +93,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <SessionProvider>
       <AuthProvider>
         <StudentProvider>
-          <RouterProvider router={router} />
+          <ClassProvider>
+            <RouterProvider router={router} />
+          </ClassProvider>
         </StudentProvider>
       </AuthProvider>
     </SessionProvider>

@@ -62,3 +62,24 @@
 .gren-color{
  color: rgb(34 197 94);;
 }
+
+.course-1,
+.course-6,
+.course-7
+{
+    background-color: #BA68C8;   
+}
+
+.course-2,
+.course-5,
+.course-9
+{
+    background-color: #407BFF;   
+}
+
+.course-3,
+.course-6,
+.course-9
+{
+    background-color: #ffc527e2;   
+}

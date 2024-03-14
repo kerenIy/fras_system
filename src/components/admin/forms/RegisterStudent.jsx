@@ -150,13 +150,24 @@ export default function RegisterStudent() {
                                     Class ID
                                 </p>
                             
-                                <input 
+                                {/* <input 
                                     type="text" 
                                     className='lect-input rounded-sm w-40 font-light' 
                                     placeholder='e.g. SEB'
                                     ref={ClassRef}
                                     onChange={((e) => setClassID(e.target.value))}
-                                />
+                                /> */}
+                                <select name="Class ID" className='lect-input rounded-sm w-40 font-light p-[2%]' id="" ref={ClassRef} onChange={((e) => setClassID(e.target.value))}>
+                                    <option value="">Select Class</option>
+                                    <option value="1">Software Eng, Group A</option>
+                                    <option value="2">Software Eng, Group B</option>
+                                    <option value="3">Software Eng, Group C</option>
+                                    <option value="4">Software Eng, Group D</option>
+                                    <option value="1">Computer Sci, Group A</option>
+                                    <option value="2">Computer Sci, Group B</option>
+                                    <option value="3">Computer Sci, Group C</option>
+                                    <option value="4">Computer Sci, Group D</option>
+                                </select>
                             </div>
                         </div>
                         
