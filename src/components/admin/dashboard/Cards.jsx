@@ -97,7 +97,7 @@ export default function Cards() {
   return (
     <>
         <div className="mt-3">
-            <p className='ml-6 mt-5 font-normal text-xl text-zinc-600'>Overview</p>
+            <p className='ml-6 mt-5 font-normal text-lg text-zinc-600'>Overview</p>
             <div className="flex card-container">
                 <CardItem darker='card-two-darker' lighter='card-one-lighter' title='total students' cardIcon='card-icon rounded-full w-2 h-2' icon={faUser} figures={students} />
                 <CardItem darker='card-one-darker' lighter='card-three-lighter' title='total lecturers'  cardIcon='card-icon2 rounded-full w-2 h-2' icon={faCoins} figures={lecturers} />

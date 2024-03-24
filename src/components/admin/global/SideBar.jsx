@@ -13,6 +13,18 @@ import RegisterStudent from '../forms/RegisterStudent';
 import { useState } from 'react';
 import RegisterLecturer from '../forms/RegisterLecturer';
 
+import { Button } from "../../../../@/components/ui/button"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from  "../../../../@/components/ui/dialog"
+
+
 export default function SideBar() {
   const [showPopup, setShowPopup] = useState(false)
   const [lecturerPopup, setLecturerPopup] = useState(false)
@@ -39,7 +51,7 @@ export default function SideBar() {
         <div className="bg-white side-container">
 
             <div className="logo">
-              <div className="flex justify-center items-center mr-5">
+              <div className="flex justify- items-center mr-5">
                 <div className="logo flex my-4 ">
                     <img src={logo} alt="" className='bg-white rounded-full w-10 h-10'/>
                     <p className='font-medium ml-1.5 mt-2'>fa<span className='primary-text-blue'>cier</span></p>
@@ -47,9 +59,9 @@ export default function SideBar() {
               </div>
 
               <div className="rounded-full">
-                <img src={user} className="profile" />
-                <p className='mt-2 text-center text-sm'>Ibitein Iyalla</p>
-                <p className='text-zinc-600 text-xs text-center'>ibiteiniyalla@gmail.com</p>
+                {/* <img src={user} className="profile" /> */}
+                <p className='mt-2 text-sm'>Ibitein Iyalla</p>
+                {/* <p className='text-zinc-600 text-xs '>ibiteiniyalla@gmail.com</p> */}
               </div>
 
                 <div className="" onClick={handleOpenPopup}>

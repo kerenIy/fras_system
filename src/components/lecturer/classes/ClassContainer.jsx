@@ -20,9 +20,14 @@ const GET_CLASSES = `Lecturer/ViewAllClasses`
 
 import { useClass } from '../../../context/ClassProvider'
 
+import Loading from '../../global/Loading'
+import load from "../../../assets/dotss.gif"
+
 export default function ClassContainer() {
     const {token} = useContext(SessionContext)
     const {setClassID} = useClass() 
+
+    const [loading, setLoading] = useState(false)
 
     const [showPopup, setShowPopup] = useState(false)
     const [classes, setClasses] = useState([
@@ -62,8 +67,10 @@ export default function ClassContainer() {
                 })
     
                 console.log(response.data.data)
+                setLoading(false)
                 const classArray = response.data.data
                 setClasses(classArray)
+                
             }
             catch(err){
                 message = "Failed to Load Classes"
@@ -145,6 +152,20 @@ export default function ClassContainer() {
                 ))}
             </div>
         </div>
+
+        {loading && (
+                 <div className="load-popup">
+                 <div className="load-content">
+                 <div className="flex justify-end items-end">
+                     {/* <FontAwesomeIcon icon={faX} className='text-black w-3 h-3' onClick={handleClosePopup}/> */}
+                 </div>
+     
+                 <div className="flex justify-center items-center">
+                     <Loading img={load}/>
+                 </div>
+                 </div>
+             </div>
+            )}
         
     </>
   )

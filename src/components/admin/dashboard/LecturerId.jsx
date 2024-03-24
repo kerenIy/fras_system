@@ -5,6 +5,26 @@ import axios from '../.././../api/url'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch,faBell } from '@fortawesome/free-solid-svg-icons'
 
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "../../../../@/components/ui/table"
+
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "../../../../@/components/ui/pagination"
+
 const GET_LECTURERS = `Admin/ViewAllLecturers`
 
 export default function LecturerId() {
@@ -39,7 +59,8 @@ export default function LecturerId() {
             })
     
             const lecturerArray = response.data.data
-            setLecturers(lecturerArray)
+            const lecturerArrayEight = lecturerArray.slice(0, 8)
+            setLecturers(lecturerArrayEight)
           }
           catch(err){
             console.log(err)
@@ -74,10 +95,62 @@ export default function LecturerId() {
                         </div> */}
                     </div>
             </div>
+
+            <Table className="mt-[4%] w-[90%] ml-[5%]">
+                        <TableHeader className="bg-[#525ceb85]">
+                            <TableRow>
+                            <TableHead className="">ID</TableHead>
+                            <TableHead>Name</TableHead>
+                            <TableHead>Department ID</TableHead>
+                            <TableHead>Courses</TableHead>
+                            <TableHead>Time Created</TableHead>
+                            <TableHead className="">Time Updated</TableHead>
+                            </TableRow>
+                        </TableHeader>
+
+                        <TableBody>
+                            {lecturers.map((item) =>(
+                                <TableRow className="p-0 text-[10px] text-center border">
+                                    <TableCell className="">{item.id}</TableCell>
+                                    <TableCell>{item.name}</TableCell>
+                                    <TableCell>{item.departmentId}</TableCell>
+                                    <TableCell className=''>
+                                    {item.courses}
+                                    </TableCell>
+                                    <TableCell>{formatDate(item.timeCreated)}</TableCell>
+                                    <TableCell className="">{formatDate(item.timeUpdated)}</TableCell>
+                                </TableRow>
+                            ))}
+                            
+                        </TableBody>
+              </Table>
+             <div className="my-[2%] flex justify-end items-end mr-[5%]">
+             <Pagination>
+                        <PaginationContent className="mt-[2%] text-xs flex justify-end items-end ">
+                            {/* <PaginationItem>
+                            <PaginationPrevious href="#" className="px-2.5 py-1.5 text-[6px] text-gray-500 bg-white border border-gray-300 rounded-md hover:bg-gray-100" />
+                            </PaginationItem> */}
+
+                            <PaginationItem>
+                            <PaginationLink href="#" className="px-3 py-1.5 text-xs  text-white bg-blue-600 border border-blue-600  rounded-md hover:bg-gray-100">1</PaginationLink>
+                            </PaginationItem>
+
+                            <PaginationItem>
+                            <PaginationLink href="#" className="px-2.5 py-1.5 text-xs   text-gray-700 bg-white border border-gray-300 rounded-md">2</PaginationLink>
+                            </PaginationItem>
+
+                            <PaginationItem>
+                            <PaginationLink href="#" className="px-2.5 py-1.5 text-xs  text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-100">3</PaginationLink>
+                            </PaginationItem>
+                            {/* <PaginationItem>
+                            <PaginationNext href="#" className="px-2.5 py-1.5 text-xs  text-gray-500 bg-white border border-gray-300 rounded-md hover:bg-gray-100" />
+                            </PaginationItem> */}
+                        </PaginationContent>
+              </Pagination>
+             </div>
             
-            <table className='border rounded-lg ml-6 mt-8' >
+            {/* <table className='border rounded-lg ml-6 mt-8' >
                         <tr className='header rounded-lg text-sm' style={{ borderTop: '1px dotted #000', width: '100%', height: '1px' }}>
-                            {/* <th className='px-6'>No</th> */}
                             <th className='px-6'>ID</th>
                             <th className='px-6'>Name</th>
                             <th className='px-6'>Department ID</th>
@@ -101,7 +174,7 @@ export default function LecturerId() {
                                 <hr className='font-bold tet-black h-[10px]'/>
                             </>
                         ))}
-                    </table>
+            </table> */}
 
 
         </div>
