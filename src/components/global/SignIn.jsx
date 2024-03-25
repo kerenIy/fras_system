@@ -80,11 +80,11 @@ export default function Login(props) {
       setLoading(false);
       let message = "";
       if (err.response && err.response.data) {
-        message = err.response.data.message;
+        message = err.response.data.errors[0];
       }
-      if (err.response && err.response.status == 400) {
-        message = "Invalid Username or Password";
-      }
+      // if (err.response && err.response.status == 400) {
+      //   message = "Invalid Username or Password";
+      // }
       failure(message);
     }
   };

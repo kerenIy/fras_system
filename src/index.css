@@ -165,6 +165,10 @@ input {
   width: 80%;
 }
 
+.gray-bd {
+  border: 1.5px solid rgba(82, 82, 91, 0.582);
+}
+
 .admin-circle {
   border: 1px solid #525ceb;
   background-color: #525ceb;
